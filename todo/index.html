@@ -1,0 +1,44 @@
+    <html ng-app="todoApp">
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="js/todo.js"></script>
+        <link rel="stylesheet" href="css/todo.css">
+      </head>
+<style>
+body  {
+    background-image: url("/home/anurag/workspace/angularJS/img/bg.png");
+    background-color: #cccccc;
+    text-align:center;
+    color:wheat;
+}
+a{
+color:wheat;
+text-decoration:none
+}
+
+</style>
+      <body>
+        <h2>Angular Todo App</h2>
+        <div ng-controller="TodoListCtrl as todoList">
+          <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+          [ <a href="" ng-click="todoList.archive()">archive</a> ]
+          <ul class="unstyled">
+            <li ng-repeat="todo in todoList.todos">
+              <input type="checkbox" ng-model="todo.done">
+              <span class="done-{{todo.done}}">{{todo.text}}</span>
+            </li>
+          </ul>
+          <form ng-submit="todoList.addTodo()">
+            <input style="color:grey" type="text" ng-model="todoList.todoText"  size="30"
+                   placeholder="Add some new tasks here">
+<br>
+<br>
+            <input  class="btn btn-success" type="submit" value="Add Task">
+          </form>
+        </div>
+      </body>
+    </html>
+
+
